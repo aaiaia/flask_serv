@@ -46,6 +46,11 @@ def showTextInBrowser():
     _filePath = './_tmp_flask_test_file.txt'
     return send_file(_filePath)
 
+@app.route('/downloadText', methods = ['GET'])
+def downloadText():
+    _filePath = './_tmp_flask_test_file.txt'
+    return send_file(_filePath, as_attachment=True)
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
 
