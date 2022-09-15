@@ -43,12 +43,12 @@ def delete():
 
 @app.route('/showTextInBrowser', methods = ['GET'])
 def showTextInBrowser():
-    _filePath = './_tmp_flask_test_file.txt'
+    _filePath = './_sample_text_file.txt'
     return send_file(_filePath)
 
 @app.route('/downloadText', methods = ['GET'])
 def downloadText():
-    _filePath = './_tmp_flask_test_file.txt'
+    _filePath = './_sample_text_file.txt'
     return send_file(_filePath, as_attachment=True)
 
 if __name__ == '__main__':
