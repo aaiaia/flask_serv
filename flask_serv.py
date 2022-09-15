@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 import json
 app = Flask(__name__)
 @app.route('/')
@@ -40,6 +40,11 @@ def post():
 def delete():
     print('request: ' + str(request))
     return 'python get DELETE method\n'
+
+@app.route('/showTextInBrowser', methods = ['GET'])
+def showTextInBrowser():
+    _filePath = './_tmp_flask_test_file.txt'
+    return send_file(_filePath)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
