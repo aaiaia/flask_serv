@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, abort
+from pathlib import Path
 import json
 app = Flask(__name__)
 @app.route('/')
@@ -46,14 +47,20 @@ def showFileInBrowser():
     _path = './'
     _fileName = '_sample_text_file.txt'
     _filePath = _path + _fileName
-    return send_file(_filePath)
+    if Path(_filePath).exists():
+        return send_file(_filePath)
+    else:
+        return abort(404)
 
 @app.route('/downloadFile', methods = ['GET'])
 def downloadFile():
     _path = './'
     _fileName = '_sample_text_file.txt'
     _filePath = _path + _fileName
-    return send_file(_filePath, as_attachment=True)
+    if Path(_filePath).exists():
+        return send_file(_filePath, as_attachment=True)
+    else:
+        return abort(404)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
