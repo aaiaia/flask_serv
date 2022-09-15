@@ -43,12 +43,16 @@ def delete():
 
 @app.route('/showFileInBrowser', methods = ['GET'])
 def showFileInBrowser():
-    _filePath = './_sample_text_file.txt'
+    _path = './'
+    _fileName = '_sample_text_file.txt'
+    _filePath = _path + _fileName
     return send_file(_filePath)
 
 @app.route('/downloadFile', methods = ['GET'])
 def downloadFile():
-    _filePath = './_sample_text_file.txt'
+    _path = './'
+    _fileName = '_sample_text_file.txt'
+    _filePath = _path + _fileName
     return send_file(_filePath, as_attachment=True)
 
 if __name__ == '__main__':
