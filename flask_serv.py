@@ -41,13 +41,13 @@ def delete():
     print('request: ' + str(request))
     return 'python get DELETE method\n'
 
-@app.route('/showTextInBrowser', methods = ['GET'])
-def showTextInBrowser():
+@app.route('/showFileInBrowser', methods = ['GET'])
+def showFileInBrowser():
     _filePath = './_sample_text_file.txt'
     return send_file(_filePath)
 
-@app.route('/downloadText', methods = ['GET'])
-def downloadText():
+@app.route('/downloadFile', methods = ['GET'])
+def downloadFile():
     _filePath = './_sample_text_file.txt'
     return send_file(_filePath, as_attachment=True)
 
