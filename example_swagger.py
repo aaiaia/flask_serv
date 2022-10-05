@@ -12,7 +12,7 @@ api_sub_0 = api_default.namespace('sub_0', description='hello world API')
 api_download = api_default.namespace('download', description='download files')
 
 # -----------------------------------------------------
-# api list
+# default api list
 # -----------------------------------------------------
 @api_default.route('/hello')
 class getHelloWorld(Resource):
@@ -117,6 +117,7 @@ class getHelloWorld(Resource):
         return {'hello': 'world'}
 
 # -----------------------------------------------------
+# sub_0 api list
 # -----------------------------------------------------
 @api_sub_0.route('/hello')
 class aiagent_getHelloWorld(Resource):
@@ -146,6 +147,7 @@ class aiagent_getHelloWorld(Resource):
         return _response
 
 # -----------------------------------------------------
+# download api list
 # -----------------------------------------------------
 @api_download.route('/file/<name>')
 @api_download.doc(params={'name': 'insert file name with extention, if needs'})
