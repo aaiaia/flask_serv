@@ -81,9 +81,13 @@ class aiagent_getHelloWorld(Resource):
         _response = {
             'hello': 'world',
             'value': str(_value),
-            'text': str(_text)
+            'text': str(_text),
+            'data': {
+                'dummykey0': 'value0',
+                'dummykey1': 'value1'
+            }
         }
-        return {'hello': 'world'}
+        return _response
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)  # , debug=True)
