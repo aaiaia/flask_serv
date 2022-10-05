@@ -1,4 +1,6 @@
-from flask import Flask, request, jsonify
+from pathlib import Path
+
+from flask import Flask, request, jsonify, send_file, abort
 from flask_restx import Api, Resource, reqparse, Namespace, fields
 
 # -----------------------------------------------------
@@ -145,10 +147,20 @@ class aiagent_getHelloWorld(Resource):
 
 # -----------------------------------------------------
 # -----------------------------------------------------
-@api_download.route('/file')
+@api_download.route('/file/<name>')
+@api_download.doc(params={'name': 'insert file name with extention, if needs'})
 class download_file(Resource):
-    def get(self):
-        return
+    @api_download.response(200, 'file founds')
+    @api_download.response(400, 'file not founds')
+    def get(self, name):
+        _path = './'
+        _fileName = name
+        _filePath = _path + _fileName
+        if Path(_filePath).exists():
+            _response = send_file(_filePath, as_attachment=True)
+        else:
+            _response = abort(status=400, description='file not founds')
+        return _response
 
 # -----------------------------------------------------
 # -----------------------------------------------------
