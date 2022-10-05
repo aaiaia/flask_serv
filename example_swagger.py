@@ -56,10 +56,16 @@ class getHelloWorld(Resource):
         }
         return _response
 
+    def post(self):
+        return {'hello': 'world'}
+
+    def delete(self):
+        return {'hello': 'world'}
+
 @api_sub_0.route('/hello')
 class aiagent_getHelloWorld(Resource):
     def get(self):
-        return  {'hello': 'world'}
+        return {'hello': 'world'}
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)  # , debug=True)
