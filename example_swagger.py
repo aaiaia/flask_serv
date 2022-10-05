@@ -20,6 +20,14 @@ df_get_parser.add_argument('text', type=str, default='', help='문자열 입력'
 class getHelloWorld(Resource):
     @api.expect(df_get_parser)
     def get(self):
+        _query_params = request.args
+        print('_query_params: ' + str(_query_params))
+
+        _value = _query_params.get('value', 0)
+        _text = _query_params.get('text', '')
+        print('_value: ' + str(_value))
+        print('_text: ' + str(_text))
+
         return  {'hello': 'world'}
 
     def put(self):
