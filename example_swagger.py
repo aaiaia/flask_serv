@@ -6,8 +6,7 @@ from flask_restx import Api, Resource, reqparse, Namespace, fields
 # -----------------------------------------------------
 app = Flask(__name__)
 api_default = Api(app, version='1.0', title='test api list',description='테스트 REST API 문서',)
-
-api_ns = api_default.namespace('aiagent', description='hello world API')
+api_sub_0 = api_default.namespace('sub_0', description='hello world API')
 
 # -----------------------------------------------------
 # api list
@@ -57,7 +56,7 @@ class getHelloWorld(Resource):
         }
         return _response
 
-@api_ns.route('/hello')
+@api_sub_0.route('/hello')
 class aiagent_getHelloWorld(Resource):
     def get(self):
         return  {'hello': 'world'}
