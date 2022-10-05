@@ -145,5 +145,12 @@ class aiagent_getHelloWorld(Resource):
 
 # -----------------------------------------------------
 # -----------------------------------------------------
+@api_dl_file.route('/file')
+class download_file(Resource):
+    def get(self):
+        return
+
+# -----------------------------------------------------
+# -----------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)  # , debug=True)
