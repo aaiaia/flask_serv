@@ -7,6 +7,7 @@ from flask_restx import Api, Resource, reqparse, Namespace, fields
 app = Flask(__name__)
 api_default = Api(app, version='1.0', title='test api list',description='테스트 REST API 문서',)
 api_sub_0 = api_default.namespace('sub_0', description='hello world API')
+api_dl_file = api_default.namespacce('download', description='download files')
 
 # -----------------------------------------------------
 # api list
@@ -113,6 +114,8 @@ class getHelloWorld(Resource):
     def delete(self):
         return {'hello': 'world'}
 
+# -----------------------------------------------------
+# -----------------------------------------------------
 @api_sub_0.route('/hello')
 class aiagent_getHelloWorld(Resource):
     _parser = reqparse.RequestParser()
@@ -142,3 +145,5 @@ class aiagent_getHelloWorld(Resource):
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)  # , debug=True)
+# -----------------------------------------------------
+# -----------------------------------------------------
