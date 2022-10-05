@@ -1,18 +1,10 @@
 # flask_serv
-
-## swagger
+## Required package
 Required python package
 ```bash
-$ pip3 install Flask==2.1.2
-$ pip3 install flask-restx
-$ pip3 install Werkzeug`==2.1.2
+$ pip3 install Flask
 ```
-confirm python package
+## Run
 ```bash
-$ pip3 list | grep Flask
-Flask                          2.1.2
-$ pip3 list | grep flask-restx
-flask-restx                    0.5.1
-$ pip3 list |grep Werkzeug
-Werkzeug                       2.1.2
+$ python3 flask_serv.py
 ```
