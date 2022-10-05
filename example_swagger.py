@@ -7,7 +7,7 @@ from flask_restx import Api, Resource, reqparse, Namespace, fields
 app = Flask(__name__)
 api_default = Api(app, version='1.0', title='test api list',description='테스트 REST API 문서',)
 api_sub_0 = api_default.namespace('sub_0', description='hello world API')
-api_dl_file = api_default.namespace('download', description='download files')
+api_download = api_default.namespace('download', description='download files')
 
 # -----------------------------------------------------
 # api list
@@ -145,7 +145,7 @@ class aiagent_getHelloWorld(Resource):
 
 # -----------------------------------------------------
 # -----------------------------------------------------
-@api_dl_file.route('/file')
+@api_download.route('/file')
 class download_file(Resource):
     def get(self):
         return
