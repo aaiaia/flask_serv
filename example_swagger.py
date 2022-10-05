@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_restx import Api, Resource, reqparse
 
 # -----------------------------------------------------
@@ -12,13 +12,23 @@ api_ns = api.namespace('aiagent', description='hello world API')
 # -----------------------------------------------------
 # api list
 # -----------------------------------------------------
+df_get_parser = reqparse.RequestParser()
+df_get_parser.add_argument('value', type=int, default=0, help='값 입력')
+df_get_parser.add_argument('text', type=str, default='', help='문자열 입력')
+
 @api.route('/hello')
-class HelloWorld1(Resource):
+class getHelloWorld(Resource):
+    @api.expect(df_get_parser)
     def get(self):
         return  {'hello': 'world'}
 
+    def put(self):
+        _json = request.json.get('data')
+        print('put request json: ' + str(_json))
+        return  {'hello': 'world'}
+
 @api_ns.route('/hello')
-class HelloWorld2(Resource):
+class aiagent_getHelloWorld(Resource):
     def get(self):
         return  {'hello': 'world'}
 
