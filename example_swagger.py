@@ -5,20 +5,20 @@ from flask_restx import Api, Resource, reqparse, Namespace, fields
 # flask and api setting
 # -----------------------------------------------------
 app = Flask(__name__)
-api = Api(app, version='1.0', title='test api list',description='테스트 REST API 문서',)
+api_default = Api(app, version='1.0', title='test api list',description='테스트 REST API 문서',)
 
-api_ns = api.namespace('aiagent', description='hello world API')
+api_ns = api_default.namespace('aiagent', description='hello world API')
 
 # -----------------------------------------------------
 # api list
 # -----------------------------------------------------
-@api.route('/hello')
+@api_default.route('/hello')
 class getHelloWorld(Resource):
     _parser = reqparse.RequestParser()
     _parser.add_argument('value', type=int, default=0, help='값 입력')
     _parser.add_argument('text', type=str, default='', help='문자열 입력')
 
-    @api.expect(_parser)
+    @api_default.expect(_parser)
     def get(self):
         _query_params = request.args
         print('_query_params: ' + str(_query_params))
@@ -35,12 +35,12 @@ class getHelloWorld(Resource):
         }
         return _response
 
-    _fields = api.model('put', {
+    _fields = api_default.model('put', {
             'key1': fields.String(description='value of key1', required=True, example='String type value'),
             'key2': fields.String(description='value of key2', required=True, example='String type value'),
             })
 
-    @api.expect(_fields)
+    @api_default.expect(_fields)
     def put(self):
         _data = request.json
         print('_data: ' + str(_data))
