@@ -17,6 +17,7 @@ class getHelloWorld(Resource):
     _parser = reqparse.RequestParser()
     _parser.add_argument('value', type=int, default=0, help='값 입력')
     _parser.add_argument('text', type=str, default='', help='문자열 입력')
+
     @api.expect(_parser)
     def get(self):
         _query_params = request.args
@@ -27,7 +28,12 @@ class getHelloWorld(Resource):
         print('_value: ' + str(_value))
         print('_text: ' + str(_text))
 
-        return  {'hello': 'world'}
+        _response = {
+            'hello': 'world',
+            'value': str(_value),
+            'text': str(_text)
+        }
+        return _response
 
     def put(self):
         _json = request.json.get('data')
