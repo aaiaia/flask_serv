@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_restx import Api, Resource, reqparse
+from flask_restx import Api, Resource, reqparse, Namespace, fields
 
 # -----------------------------------------------------
 # flask and api setting
@@ -35,9 +35,15 @@ class getHelloWorld(Resource):
         }
         return _response
 
+    _fields = api.model('put', {
+            'key1': fields.String(description='value of key1', required=True, example='String type value'),
+            'key2': fields.String(description='value of key2', required=True, example='String type value'),
+            })
+
+    @api.expect(_fields)
     def put(self):
-        _json = request.json.get('data')
-        print('put request json: ' + str(_json))
+        _data = request.json
+        print('_data: ' + str(_data))
         return  {'hello': 'world'}
 
 @api_ns.route('/hello')
