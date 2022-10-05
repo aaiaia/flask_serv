@@ -14,11 +14,10 @@ api_ns = api.namespace('aiagent', description='hello world API')
 # -----------------------------------------------------
 @api.route('/hello')
 class getHelloWorld(Resource):
-    df_get_parser = reqparse.RequestParser()
-    df_get_parser.add_argument('value', type=int, default=0, help='값 입력')
-    df_get_parser.add_argument('text', type=str, default='', help='문자열 입력')
-
-    @api.expect(df_get_parser)
+    _parser = reqparse.RequestParser()
+    _parser.add_argument('value', type=int, default=0, help='값 입력')
+    _parser.add_argument('text', type=str, default='', help='문자열 입력')
+    @api.expect(_parser)
     def get(self):
         _query_params = request.args
         print('_query_params: ' + str(_query_params))
