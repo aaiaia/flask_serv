@@ -34,12 +34,12 @@ class getHelloWorld(Resource):
         }
         return _response
 
-    _fields = api_default.model('put', {
+    _model = api_default.model('put', {
             'key1': fields.String(description='value of key1', required=True, example='String type value'),
             'key2': fields.String(description='value of key2', required=True, example='String type value'),
             })
 
-    @api_default.expect(_fields)
+    @api_default.expect(_model)
     def put(self):
         _data = request.json
         print('_data: ' + str(_data))
