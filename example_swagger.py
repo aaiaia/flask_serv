@@ -49,7 +49,13 @@ class getHelloWorld(Resource):
         _key2_value = _data.get('key2', '')
         print('_key1_value: ' + str(_key1_value))
         print('_key2_value: ' + str(_key2_value))
-        return  {'hello': 'world'}
+
+        _response = {
+            'hello': 'world',
+            'key1': str(_key1_value),
+            'key2': str(_key2_value)
+        }
+        return _response
 
 @api_ns.route('/hello')
 class aiagent_getHelloWorld(Resource):
