@@ -44,6 +44,11 @@ class getHelloWorld(Resource):
     def put(self):
         _data = request.json
         print('_data: ' + str(_data))
+
+        _key1_value = _data.get('key1', '')
+        _key2_value = _data.get('key2', '')
+        print('_key1_value: ' + str(_key1_value))
+        print('_key2_value: ' + str(_key2_value))
         return  {'hello': 'world'}
 
 @api_ns.route('/hello')
