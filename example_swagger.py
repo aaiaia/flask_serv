@@ -7,14 +7,18 @@ from flask_restx import Api, Resource, reqparse
 app = Flask(__name__)
 api = Api(app, version='1.0', title='test api list',description='테스트 REST API 문서',)
 
-api_ns = api.namespace('test', description='hello world API')
+api_ns = api.namespace('aiagent', description='hello world API')
 
 # -----------------------------------------------------
 # api list
 # -----------------------------------------------------
+@api.route('/hello')
+class HelloWorld1(Resource):
+    def get(self):
+        return  {'hello': 'world'}
 
 @api_ns.route('/hello')
-class HelloWorld(Resource):
+class HelloWorld2(Resource):
     def get(self):
         return  {'hello': 'world'}
 
