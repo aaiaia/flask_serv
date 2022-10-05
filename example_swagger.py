@@ -64,7 +64,25 @@ class getHelloWorld(Resource):
 
 @api_sub_0.route('/hello')
 class aiagent_getHelloWorld(Resource):
+    _parser = reqparse.RequestParser()
+    _parser.add_argument('value', type=int, default=0, help='값 입력')
+    _parser.add_argument('text', type=str, default='', help='문자열 입력')
+
+    @api_default.expect(_parser)
     def get(self):
+        _query_params = request.args
+        print('_query_params: ' + str(_query_params))
+
+        _value = _query_params.get('value', 0)
+        _text = _query_params.get('text', '')
+        print('_value: ' + str(_value))
+        print('_text: ' + str(_text))
+
+        _response = {
+            'hello': 'world',
+            'value': str(_value),
+            'text': str(_text)
+        }
         return {'hello': 'world'}
 
 if __name__ == '__main__':
