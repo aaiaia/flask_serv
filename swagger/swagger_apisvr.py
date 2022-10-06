@@ -7,7 +7,7 @@ from flask_restx import Api, Resource, reqparse, Namespace, fields
 # flask and api setting
 # -----------------------------------------------------
 app = Flask(__name__)
-api_default = Api(app, version='1.0', title='test api list',description='테스트 REST API 문서',)
+api_default = Api(app, version='1.0', title='test api list', description='테스트 REST API 문서', doc='/docs')
 api_sub_0 = api_default.namespace('sub_0', description='hello world API')
 api_download = api_default.namespace('download', description='download files')
 
