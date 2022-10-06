@@ -4,7 +4,7 @@ Required python package
 ```bash
 $ pip3 install Flask==2.1.2
 $ pip3 install flask-restx
-$ pip3 install Werkzeug`==2.1.2
+$ pip3 install Werkzeug==2.1.2
 ```
 confirm python package
 ```bash
