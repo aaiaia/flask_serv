@@ -62,6 +62,11 @@ def downloadFile():
     else:
         return abort(404)
 
+@app.route('/test_abort/<int:code>')
+def test_abort(code):
+    print('abort code: ' + str(code))
+    return abort(code)
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
 
